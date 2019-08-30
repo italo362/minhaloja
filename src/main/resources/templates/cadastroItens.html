@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Cadastro de Itens</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Loja</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/formulario_cliente">Cliente</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">item</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/paginaPedido2">Pedido</a>
+                    </li>
+                    
+
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+    </div>
+    <br>
+    <div class="container">
+        <form method="POST" action="#" th:action="@{/novo_item}" th:object="${item}">
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" id="nome"name="nome" aria-describedby="nome" placeholder="Nome do item" >
+                <p th:if="${#fields.hasErrors('nome')}" th:errors="${item.nome}">Name Error</p> 
+        
+            </div>
+            <div class="form-group">
+                <label for="preco">Preço</label>
+                <input type="text" class="form-control" id="preco" name="preco" placeholder="Preço do item">
+                <p th:if="${#fields.hasErrors('preco')}" th:errors="${item.preco}">Name Error</p> 
+            </div>
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+            <button type="submit" class="btn btn-primary">Atualizar Item</button>
+        </form>
+    </div>
+</body>
+
+</html>
